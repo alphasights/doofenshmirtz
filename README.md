@@ -33,7 +33,9 @@ Doofenshmirtz::SelfDestruct.report(MyCustomerReporter)
 Here is an example of a simple one that prints to stdout:
 
 ```ruby
-class DefaultReporter
+class MyCustomerReporter
+  attr_accessor :mechanisms
+
   def initialize(mechanisms)
     self.mechanisms = mechanisms
   end
