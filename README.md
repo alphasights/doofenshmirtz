@@ -1,5 +1,7 @@
 # Doofenshmirtz
 
+## Usage
+
 Let your Rails code self destruct in tests.
 
 Set an expiration date anywhere:
@@ -65,10 +67,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install doofenshmirtz
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
