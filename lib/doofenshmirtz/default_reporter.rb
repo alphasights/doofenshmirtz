@@ -1,3 +1,5 @@
+require "colorize"
+
 module Doofenshmirtz
   class DefaultReporter
     include ActionView::Helpers::DateHelper
