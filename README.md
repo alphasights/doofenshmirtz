@@ -7,7 +7,7 @@ Let your Rails code self destruct in tests.
 Set an expiration date anywhere:
 
 ```ruby
-Doofenshmirtz::SelfDestruct.on(“2015-05-09”)
+Doofenshmirtz::SelfDestruct.on("2015-05-09")
 ```
 
 
