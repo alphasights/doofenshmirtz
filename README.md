@@ -10,23 +10,43 @@ Set an expiration date anywhere:
 Doofenshmirtz::SelfDestruct.on("2015-05-09")
 ```
 
-
-and watch it explode if the code is still around on that date. You’ll also
-get warning messages in you test output to let you know that that there
-are self descruction mechanisms in the code and when they will blow up.
-
-## Reporting
+and in your test environment, if it is before that date, it will display
+a warning and let you know how much time you have until the self destruct
+mechanism is activated. If it is after that date, it wil throw an exception
+causing your tests to fail. In any other environment, it will just be ignored.
 
 
-You can put the following in an `after_suite` callback (or anywhere really)
-and output what self destruct mechanisms are currently enabled.
+## Installation
+
+Add this line to your application's Gemfile:
 
 ```ruby
-Doofenshmirtz::SelfDestruct.report
+gem 'doofenshmirtz'
 ```
 
-You can also pass a custom report. All you need to implement is a `#report`
-method.
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install doofenshmirtz
+
+
+### Reporting
+
+You can put the following in an `after_suite` callback (or anywhere really)
+and output what self destruct mechanisms are currently enabled. For example in
+rspec, you would put the following in your spec helper.
+
+```ruby
+config.after(:suite) do
+  Doofenshmirtz::SelfDestruct.report
+end
+```
+
+You can also pass a custom reporter class to customize the output.
+All you need to implement is the `#report` method.
 
 ```ruby
 Doofenshmirtz::SelfDestruct.report(MyCustomerReporter)
@@ -52,21 +72,6 @@ class MyCustomerReporter
 end
 ```
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'doofenshmirtz'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install doofenshmirtz
 
 ## Contributing
 
