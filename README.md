@@ -4,10 +4,10 @@
 
 Let your Rails code self destruct in tests.
 
-Set an expiration date anywhere:
+Set an expiration date and leave a message anywhere:
 
 ```ruby
-Doofenshmirtz::SelfDestruct.on("2015-05-09")
+Doofenshmirtz::SelfDestruct.on("2015-05-09", "This is deprecated and needs to be removed")
 ```
 
 and in your test environment, if it is before that date, it will display
