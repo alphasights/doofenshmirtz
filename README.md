@@ -72,6 +72,8 @@ class MyCustomerReporter
 end
 ```
 
+## Disabling Doofenshmirtz
+To temporarily disable Doofenshmirtz set DISABLE_DOOFENSHMIRTZ environment variable to true.
 
 ## Contributing
 
