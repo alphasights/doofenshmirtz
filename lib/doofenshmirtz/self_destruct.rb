@@ -11,6 +11,12 @@ module Doofenshmirtz
       mechanisms.each { |m| destruct(m) if Time.now > m.time }
     end
 
+    def self.report(reporter = DefaultReporter)
+      reporter.new(mechanisms).report
+    end
+
+    private
+
     def self.add(time, location, reason)
       @mechanisms.add(Mechanism.new(time, location.to_s, reason))
     end
@@ -25,10 +31,6 @@ module Doofenshmirtz
       message = "Self destructed on #{mechanism.time}"
       message += " because: #{mechanism.reason}" unless mechanism.reason.blank?
       fail(SelfDestructError, message)
-    end
-
-    def self.report(reporter = DefaultReporter)
-      reporter.new(mechanisms).report
     end
 
     def self.enforce?

@@ -1,4 +1,5 @@
 require "colorize"
+require "action_view"
 
 module Doofenshmirtz
   class DefaultReporter
