@@ -10,7 +10,7 @@ Set an expiration date and leave a message anywhere:
 Doofenshmirtz::SelfDestruct.on("2015-05-09", "This is deprecated and needs to be removed")
 ```
 
-and in your test environment, if it is before that date, it will display
+and in your test environment, if it is before that date, it can report
 a warning and let you know how much time you have until the self destruct
 mechanism is activated. If it is after that date, it wil throw an exception
 causing your tests to fail. In any other environment, it will just be ignored.
