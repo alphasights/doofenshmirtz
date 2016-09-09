@@ -1,4 +1,4 @@
-require 'doofenshmirtz'
+require 'spec_helper'
 
 describe Doofenshmirtz::VERSION do
   it 'is a version number' do

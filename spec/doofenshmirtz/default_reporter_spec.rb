@@ -1,4 +1,4 @@
-require 'doofenshmirtz'
+require 'spec_helper'
 require 'ostruct'
 
 describe Doofenshmirtz::DefaultReporter do

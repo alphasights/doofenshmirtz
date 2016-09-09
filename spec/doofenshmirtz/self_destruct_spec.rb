@@ -1,5 +1,4 @@
-require 'doofenshmirtz'
-require 'pry'
+require 'spec_helper'
 
 describe Doofenshmirtz::SelfDestruct do
   let(:two_days) { 172800 }
@@ -28,6 +27,11 @@ describe Doofenshmirtz::SelfDestruct do
     it "doesn't explode outside the test environment" do
       allow(Rails).to receive_message_chain('env.test?').and_return false
       Doofenshmirtz::SelfDestruct.on(past, "The apocalypse is nigh")
+    end
+
+    it "doesn't explode repeatedly from the same cause" do
+      Doofenshmirtz::SelfDestruct.on(past, "The apocalypse is averted") rescue Doofenshmirtz::SelfDestructError
+      Doofenshmirtz::SelfDestruct.on(future, "The apocalypse has leaves on the track")
     end
   end
 

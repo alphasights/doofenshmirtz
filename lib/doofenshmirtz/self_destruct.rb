@@ -8,21 +8,21 @@ module Doofenshmirtz
     def self.on(time, reason = nil)
       add(time.to_time, caller_locations.first, reason)
 
-      mechanisms.each { |m| destruct(m) if Time.now > m.time }
+      destruct(current_mechanism) if Time.now > current_mechanism.time
     end
 
     def self.report(reporter = DefaultReporter)
       reporter.new(mechanisms).report
     end
 
-    private
+    # private class methods
 
     def self.add(time, location, reason)
-      @mechanisms.add(Mechanism.new(time, location.to_s, reason))
+      @mechanisms.add(new_mechanism(time, location, reason))
     end
 
-    def self.mechanisms
-      @mechanisms
+    def self.current_mechanism
+      @mechanism
     end
 
     def self.destruct(mechanism)
@@ -37,9 +37,19 @@ module Doofenshmirtz
       Rails.env.test? && ENV["DISABLE_DOOFENSHMIRTZ"] != "true"
     end
 
+    def self.mechanisms
+      @mechanisms
+    end
+
+    def self.new_mechanism(time, location, reason)
+      @mechanism = Mechanism.new(time, location.to_s, reason)
+    end
+
     private_class_method :add
+    private_class_method :current_mechanism
     private_class_method :destruct
-    private_class_method :mechanisms
     private_class_method :enforce?
+    private_class_method :mechanisms
+    private_class_method :new_mechanism
   end
 end
