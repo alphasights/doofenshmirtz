@@ -8,7 +8,9 @@ module Doofenshmirtz
     def self.on(time, reason = nil)
       add(time.to_time, caller_locations.first, reason)
 
-      mechanisms.each { |m| destruct(m) if Time.now > m.time }
+      mechanisms.each do |m|
+        destruct(m) if Time.now > m.time
+      end
     end
 
     def self.add(time, location, reason)
@@ -21,7 +23,6 @@ module Doofenshmirtz
 
     def self.destruct(mechanism)
       return unless enforce?
-
       message = "Self destructed on #{mechanism.time}"
       message += " because: #{mechanism.reason}" unless mechanism.reason.blank?
       fail(SelfDestructError, message)
