@@ -4,8 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails'
-
-group :development, :test do
-  gem 'timecop'
-  gem 'pry'
-end
