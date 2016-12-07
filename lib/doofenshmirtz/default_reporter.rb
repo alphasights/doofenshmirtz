@@ -1,5 +1,6 @@
 require "colorize"
-
+require 'rails'
+require 'action_view'
 module Doofenshmirtz
   class DefaultReporter
     include ActionView::Helpers::DateHelper
